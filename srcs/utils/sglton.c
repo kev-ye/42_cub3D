@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sglton.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 15:32:49 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/19 16:06:48 by kaye             ###   ########.fr       */
+/*   Created: 2021/11/19 16:08:43 by kaye              #+#    #+#             */
+/*   Updated: 2021/11/19 16:11:31 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int main()
+t_cub3d	*sglton(void)
 {
-	return (SUCESSE);
+	static t_cub3d	*sglton = NULL;
+
+	if (NULL == sglton)
+	{
+		sglton = ft_calloc(1, sizeof(t_cub3d));
+		if (NULL == sglton)
+			return NULL;
+	}
+	return sglton;
 }

@@ -6,16 +6,16 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 15:14:42 by kaye              #+#    #+#              #
-#    Updated: 2021/11/19 15:37:39 by kaye             ###   ########.fr        #
+#    Updated: 2021/11/19 17:20:46 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 
 CC		= clang
-CFLAGS 	= -Wall -Wextra -Werror
-IFLAGS 	= -I./incs -I./libft/inc -I./mlx/
-LFLAGS	= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit
+CFLAGS	= -Wall -Wextra -Werror
+IFLAGS	= -I./incs -I./libft/inc -I./mlx/
+LFLAGS	= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit -lm
 BFLAGS	= 0
 
 # DIRECTORIES
@@ -35,7 +35,9 @@ DIRS			:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
 
 NAME			:= cub3d
 MLX				:= libmlx.dylib
-SRC				:= main.c
+SRC				:= main.c 
+SUB_SRC			:= sglton.C
+SRC				+= $(addprefix utils/, $(SUB_SRC))
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 # COLORS
@@ -54,7 +56,7 @@ B_CYAN 			= \033[1;36m
 
 ifeq ($(shell uname), Linux)
 $(NAME): IFLAGS 	= -I./incs -I./libft/inc -I./mlx_linux/
-$(NAME): LFLAGS	= -L./libft -lft -L./mlx_linux -lmlx_Linux -lXext -lX11
+$(NAME): LFLAGS	= -L./libft -lft -L./mlx_linux -lmlx_Linux -lXext -lX11 -lm
 $(NAME): MLX_DIR = ./mlx_linux
 $(NAME): MLX = libmlx.a
 endif
