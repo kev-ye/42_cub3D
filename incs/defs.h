@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/19 17:38:53 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/21 19:26:41 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,8 @@
 
 /** @brief message*/
 # define USAGE "usage: ./cub3d [\033[1;33mmap path\033[0m]"
-# define OPEN "OPEN failed\n"
-# define ID "ID error\n"
+# define E_SYS "SYSCALL failed"
+# define E_OPEN "OPEN failed\n"
+# define E_ID "ID error\n"
 
 #endif

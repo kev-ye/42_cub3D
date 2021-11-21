@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 15:14:42 by kaye              #+#    #+#              #
-#    Updated: 2021/11/19 17:20:46 by kaye             ###   ########.fr        #
+#    Updated: 2021/11/21 17:24:57 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ DIRS			:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
 NAME			:= cub3d
 MLX				:= libmlx.dylib
 SRC				:= main.c 
-SUB_SRC			:= sglton.C
+SUB_SRC			:= tools.C \
+					exit.c
 SRC				+= $(addprefix utils/, $(SUB_SRC))
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

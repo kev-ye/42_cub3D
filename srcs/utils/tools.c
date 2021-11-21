@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sglton.c                                           :+:      :+:    :+:   */
+/*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 16:08:43 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/19 16:11:31 by kaye             ###   ########.fr       */
+/*   Created: 2021/11/21 17:24:14 by kaye              #+#    #+#             */
+/*   Updated: 2021/11/21 19:40:43 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ t_cub3d	*sglton(void)
 	{
 		sglton = ft_calloc(1, sizeof(t_cub3d));
 		if (NULL == sglton)
-			return NULL;
+			exit_clean(E_SYS);
 	}
 	return sglton;
+}
+
+void	free_clean(void **to_free)
+{
+	free(*to_free);
+	*to_free = NULL;
 }

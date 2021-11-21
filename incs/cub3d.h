@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:40:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/19 17:35:53 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/21 17:21:37 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@
 
 /** @brief utils fonction */
 t_cub3d	*sglton(void);
-void	exit_clean(char const * msg);
+void	free_clean(void **);
+void	exit_clean(char const *);
 
 
 #endif
