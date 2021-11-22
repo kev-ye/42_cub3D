@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pathParsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 15:32:49 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/22 18:53:07 by kaye             ###   ########.fr       */
+/*   Created: 2021/11/22 16:58:30 by kaye              #+#    #+#             */
+/*   Updated: 2021/11/22 17:38:13 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	_parsing(char const *path)
+void	path_parsing(void)
 {
-	info_parsing(path);
-	// path_parsing();
-	// map_parsing(fd);
-}
+	t_cub3d	*ptr;
+	int		fd;
+	int		i;
 
-int main(int ac, char **av)
-{
-	(void)av;
-	t_cub3d *ptr;
-
-	if (2 != ac)
-		exit_clean(USAGE);
 	ptr = sglton();
-	ft_bzero(ptr, sizeof(t_cub3d));
-
-	_parsing(av[1]);
-	t_list *tmp = ptr->config;
-	while (tmp != NULL)
+	i = 0;
+	while (i < PATHMAX)
 	{
-		printf("%s\n", tmp->content);
-		tmp = tmp->next;
+		fd = open(ptr->map_info.path[i++], O_RDONLY);
+		if (SYSCALL_ERROR == fd)
+			exit_clean(E_PATH);
+		close(fd);
 	}
-	// exit_clean("nothing");
-	return (SUCCESSE);
 }

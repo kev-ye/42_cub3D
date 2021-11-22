@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fileParsing.c                                      :+:      :+:    :+:   */
+/*   infoParsing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:34:42 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/21 19:57:40 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/22 18:56:42 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-#define INFOMAX 7
+#define INFOMAX 6
 
 enum e_status
 {
@@ -30,13 +30,6 @@ typedef struct s_info
 	size_t	info;
 }	t_info;
 
-typedef struct s_io
-{
-	int		fd;
-	int		ret;
-	char	*line;
-}	t_io;
-
 static char const	*g_id[] = {
 	"NO",
 	"SO",
@@ -47,29 +40,27 @@ static char const	*g_id[] = {
 	NULL
 };
 
-BOOL	_id_check(
+static BOOL	_id_check(
 	char const *line,
 	t_info *info,
 	int to_check,
 	int info_count[INFOMAX]
 )
 {
-	int	to_add;
 	int	i;
 
 	if (1 == info->info)
 	{
-		to_add = 0;
-		if (1 == to_check)
-			to_add = 4;
 		i = 0;
+		if (1 == to_check)
+			i = 4;
 		while (NULL != g_id[i])
 		{
-			if (0 == ft_strncmp(line, g_id[i + to_add], to_check))
+			if (0 == ft_strncmp(line + info->i - to_check, g_id[i], to_check))
 			{
-				if (i + to_add < PATHMAX)
+				if (i < PATHMAX)
 					info->id = i;
-				++info_count[i + to_add];
+				++info_count[i];
 				return (TRUE);
 			}
 			++i;
@@ -79,7 +70,7 @@ BOOL	_id_check(
 	return (TRUE);
 }
 
-BOOL	_save_path(char *line, t_info info)
+static BOOL	_save_path(char const *line, t_info info)
 {
 	size_t	len;
 	t_cub3d	*ptr;
@@ -89,25 +80,27 @@ BOOL	_save_path(char *line, t_info info)
 	{
 		len = info.end - info.start;
 		ptr->map_info.path[info.id] = ft_substr(line, info.start, len);
-		if (NULL == sglton()->map_info.path[info.id])
+		if (NULL == ptr->map_info.path[info.id])
 			return (FALSE);
 	}
 	return (TRUE);
 }
 
-BOOL	_info_line_check(char const *line, int info_count[INFOMAX])
+static BOOL	_info_line_check(char const *line, int info_count[INFOMAX])
 {
 	t_info	info;
 
 	ft_bzero(&info, sizeof(t_info));
 	info.id = -1;
-	while ('\0' == line[info.i])
+	while ('\0' != line[info.i])
 	{
-		while ('\0' == line[info.i] && ' ' == line[info.i])
+		while ('\0' != line[info.i] && ' ' == line[info.i])
 			++info.i;
 		info.start = info.i;
 		while ('\0' != line[info.i] && ' ' != line[info.i])
 			++info.i;
+		if ('\0' == line[info.i] && 2 == info.info)
+			break ;
 		info.end = info.i;
 		++info.info;
 		if (info.info > 2 || (1 == info.info && info.end - info.start > 2))
@@ -120,62 +113,55 @@ BOOL	_info_line_check(char const *line, int info_count[INFOMAX])
 	return (TRUE);
 }
 
-int	_status_check(int info_count[INFOMAX], t_io const *io_stream)
+static int	_status_check(int info_count[INFOMAX], t_list *config)
 {
 	int	i;
 
 	i = 0;
+	if ('\0' == ((char *)config->content)[0])
+		return (e_NOCOMPLETE);
+	if (FALSE == _info_line_check((char *)config->content, info_count))
+		exit_clean(E_ID);
 	while (i < INFOMAX)
 	{
 		if (0 == info_count[i])
 		{
-			if (0 == io_stream->ret)
-			{
-				free_clean((void **)&io_stream->line);
-				close(io_stream->fd);
+			if (NULL == config->content)
 				exit_clean(E_ID);
-			}
-			free_clean((void **)&io_stream->line);
 			return (e_NOCOMPLETE);
 		}
-		if (info_count[i] > 1)
-		{
-			free_clean((void **)&io_stream->line);
-			close(io_stream->fd);
+		if (info_count[i++] > 1)
 			exit_clean(E_ID);
-		}
 	}
-	free_clean((void **)&io_stream->line);
 	return (e_COMPLETE);
 }
 
-int	info_check(char const *path) // norme pb
+void	info_parsing(char const *path)
 {
+	t_cub3d		*ptr;
+	t_list		*tmp;
 	t_io		io_stream;
 	static int	info_count[INFOMAX] = {0};
 
+	ft_bzero(&io_stream, sizeof(io_stream));
 	io_stream.fd = open(path, O_RDONLY);
 	if (SYSCALL_ERROR == io_stream.fd)
-		exit_clean(E_OPEN);
-	ft_bzero(&io_stream, sizeof(io_stream));
+		exit_clean(E_SYS);
 	io_stream.ret = 1;
+	ptr = sglton();
 	while (io_stream.ret > 0)
 	{
-		io_stream.ret = get_next_line(io_stream.fd, &io_stream.line);
-		if (io_stream.ret < 0)
-		{
-			close(io_stream.fd);
-			exit_clean(E_SYS);
-		}
-		if ('\0' == io_stream.line[0])
-		{
-			free_clean((void **)&io_stream.line);
-			continue ;
-		}
-		if (FALSE == _info_line_check(io_stream.line, info_count))
-			exit_clean(E_ID);
-		if (e_COMPLETE == _status_check(info_count, &io_stream))
-			break ;
+		io_stream.ret = gnl(&(io_stream.fd), &(io_stream.line), NULL);
+		ft_lstadd_back(&ptr->config, ft_lstnew(ft_strdup(io_stream.line)));
+		free_clean((void **)&(io_stream.line));
 	}
-	return (io_stream.fd);
+	tmp = ptr->config;
+	while (NULL != ptr->config)
+	{
+		printf(S_GREEN"debug line:%5c"S_NONE"%s\n", ' ', ptr->config->content);
+		if (e_COMPLETE == _status_check(info_count, ptr->config))
+			break ;
+		ptr->config = ptr->config->next;
+	}
+	ptr->config = tmp;
 }

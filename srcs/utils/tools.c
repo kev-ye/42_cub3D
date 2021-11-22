@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:24:14 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/21 19:40:43 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/22 17:54:59 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,38 @@ t_cub3d	*sglton(void)
 
 void	free_clean(void **to_free)
 {
-	free(*to_free);
+	if (NULL != *to_free)
+		free(*to_free);
 	*to_free = NULL;
+}
+
+int		gnl(int const *fd, char **line,	void *to_free)
+{
+	int ret;
+
+	ret = get_next_line(*fd, line);
+	if (ret < 0)
+	{
+		if (NULL != to_free)
+			free_clean((void **)&to_free);
+		close(*fd);
+		exit_clean(E_SYS);
+	}
+	return (ret);
+}
+
+char	*join(char *s1, char *s2, int const *fd, void *to_free)
+{
+	char *ret;
+
+	ret = ft_strjoin_gnl(s1, s2);
+	if (NULL == ret)
+	{
+		if (NULL != fd)
+			close(*fd);
+		if (NULL != to_free)
+			free_clean((void **)&to_free);
+		exit_clean(E_SYS);
+	}
+	return (ret);
 }

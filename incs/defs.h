@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/21 19:26:41 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/22 18:16:07 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@
 # define S_BLUE "\033[1;34m"
 # define S_PURPLE "\033[1;35m"
 # define S_CYAN "\033[1;36m"
+
+/** @brief exit return define */
+# define LOG printf("here: line: ["S_RED"%d"S_NONE"] file: ["S_RED"%s"S_NONE"]\n", __LINE__, __FILE__)
+# define DEBUGP(x) printf("address: ["S_RED"%p"S_NONE"] -> ", x);LOG;
+# define DEBUGS(s) printf("content: ["S_RED"%s"S_NONE"] -> ", s);LOG;
 
 /** @brief boolean define */
 # define BOOL unsigned int
@@ -42,10 +47,19 @@
 /** @brief path number */
 # define PATHMAX 4
 
-/** @brief message*/
+/** @brief message */
 # define USAGE "usage: ./cub3d [\033[1;33mmap path\033[0m]"
-# define E_SYS "SYSCALL failed"
-# define E_OPEN "OPEN failed\n"
+# define E_SYS "SYSCALL failed\n"
+# define E_PATH "PATH file no exist\n"
 # define E_ID "ID error\n"
+# define E_MAP "MAP error\n"
+
+/** @brief includes */
+# include <fcntl.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <math.h>
+# include <mlx.h>
+# include "libft.h"
 
 #endif

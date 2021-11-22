@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:04:11 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/19 17:56:06 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/22 18:05:57 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,25 @@ enum e_path
 	e_C
 };
 
+typedef struct s_io
+{
+	int		fd;
+	int		ret;
+	char	*line;
+}	t_io;
+
 typedef struct s_map
 {
-	BOOL	is_correct;
-	char	**map;
 	char	*path[PATHMAX];
+	char	**map;
 }	t_map;
 
 typedef struct s_cub3d
 {
+	int i;
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_list	*config;
 	t_map	map_info;
 }	t_cub3d;
 

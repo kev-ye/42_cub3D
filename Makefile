@@ -6,14 +6,14 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 15:14:42 by kaye              #+#    #+#              #
-#    Updated: 2021/11/21 17:24:57 by kaye             ###   ########.fr        #
+#    Updated: 2021/11/22 17:12:34 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
 IFLAGS	= -I./incs -I./libft/inc -I./mlx/
 LFLAGS	= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit -lm
 BFLAGS	= 0
@@ -35,9 +35,13 @@ DIRS			:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
 
 NAME			:= cub3d
 MLX				:= libmlx.dylib
-SRC				:= main.c 
-SUB_SRC			:= tools.C \
-					exit.c
+SRC				:= main.c
+SUB_SRC			:= infoParsing.c \
+				   pathParsing.c \
+				   mapParsing.c
+SRC				+= $(addprefix parser/, $(SUB_SRC))
+SUB_SRC			:= tools.c \
+				   exit.c
 SRC				+= $(addprefix utils/, $(SUB_SRC))
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 
