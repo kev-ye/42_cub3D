@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/21 17:24:14 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/22 17:54:59 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 15:45:54 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_cub3d	*sglton(void)
 
 void	free_clean(void **to_free)
 {
-	if (NULL != *to_free)
+	if (NULL != to_free && NULL != *to_free)
 		free(*to_free);
 	*to_free = NULL;
 }

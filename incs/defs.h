@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/22 18:16:07 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 15:34:52 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@
 # define USAGE "usage: ./cub3d [\033[1;33mmap path\033[0m]"
 # define E_SYS "SYSCALL failed\n"
 # define E_PATH "PATH file no exist\n"
+# define E_EMPTY "CONFIG is empty\n"
 # define E_ID "ID error\n"
 # define E_MAP "MAP error\n"
+
+# define SGT sglton()
 
 /** @brief includes */
 # include <fcntl.h>

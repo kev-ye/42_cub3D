@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:04:11 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/22 18:05:57 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 14:01:58 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_cub3d
 	int i;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_list	*config;
+	char	**config;
 	t_map	map_info;
 }	t_cub3d;
 

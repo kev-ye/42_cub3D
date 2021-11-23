@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:40:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/22 18:14:59 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 15:16:52 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,22 @@
 # include "defs.h"
 # include "class.h"
 
-/** @brief utils fonction */
+/** @brief tools */
 t_cub3d	*sglton(void);
 void	free_clean(void **);
-void	exit_clean(char *);
 int		gnl(int const *, char **, void *);
 char	*join(char *, char *, int const*, void *);
 
+/** @brief lib */
+char	**lst2tab(t_list *);
+size_t	strslen(char **);
+
+/** @brief exit */
+void	exit_clean(char *);
+
 /** @brief parser */
-void	info_parsing(char const *);
-void	path_parsing(void);
-void	map_parsing(int const fd);
+void	config_parsing(char const *);
+int		info_config_parsing(void);
+void	map_config_parsing(int const fd);
 
 #endif

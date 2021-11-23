@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   infoParsing.c                                      :+:      :+:    :+:   */
+/*   infoConfigParsing.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:34:42 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/22 18:56:42 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 15:56:59 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 enum e_status
 {
 	e_NOCOMPLETE = 0,
-	e_COMPLETE,
-	e_DUPLICATE
+	e_COMPLETE
 };
 
 typedef struct s_info
@@ -75,11 +74,12 @@ static BOOL	_save_path(char const *line, t_info info)
 	size_t	len;
 	t_cub3d	*ptr;
 
-	ptr = sglton();
+	ptr = SGT;
 	if (2 == info.info)
 	{
 		len = info.end - info.start;
-		ptr->map_info.path[info.id] = ft_substr(line, info.start, len);
+		if (-1 != info.id)
+			ptr->map_info.path[info.id] = ft_substr(line, info.start, len);
 		if (NULL == ptr->map_info.path[info.id])
 			return (FALSE);
 	}
@@ -113,21 +113,22 @@ static BOOL	_info_line_check(char const *line, int info_count[INFOMAX])
 	return (TRUE);
 }
 
-static int	_status_check(int info_count[INFOMAX], t_list *config)
+static int	_status_check(int info_count[INFOMAX], char *config)
 {
 	int	i;
 
 	i = 0;
-	if ('\0' == ((char *)config->content)[0])
+	if ('\0' == config[0])
 		return (e_NOCOMPLETE);
-	if (FALSE == _info_line_check((char *)config->content, info_count))
+	if (FALSE == _info_line_check(config, info_count))
 		exit_clean(E_ID);
 	while (i < INFOMAX)
 	{
 		if (0 == info_count[i])
 		{
-			if (NULL == config->content)
+			if (NULL == config)
 				exit_clean(E_ID);
+			printf(S_GREEN"CFG:%5c"S_NONE"%s\n", ' ', config);
 			return (e_NOCOMPLETE);
 		}
 		if (info_count[i++] > 1)
@@ -136,32 +137,24 @@ static int	_status_check(int info_count[INFOMAX], t_list *config)
 	return (e_COMPLETE);
 }
 
-void	info_parsing(char const *path)
+int	info_config_parsing(void)
 {
-	t_cub3d		*ptr;
-	t_list		*tmp;
-	t_io		io_stream;
 	static int	info_count[INFOMAX] = {0};
+	char		**config;
+	int			i;
+	int			parse_index;
 
-	ft_bzero(&io_stream, sizeof(io_stream));
-	io_stream.fd = open(path, O_RDONLY);
-	if (SYSCALL_ERROR == io_stream.fd)
-		exit_clean(E_SYS);
-	io_stream.ret = 1;
-	ptr = sglton();
-	while (io_stream.ret > 0)
+	i = 0;
+	parse_index = 0;
+	config = SGT->config;
+	while (NULL != config && NULL != config[i])
 	{
-		io_stream.ret = gnl(&(io_stream.fd), &(io_stream.line), NULL);
-		ft_lstadd_back(&ptr->config, ft_lstnew(ft_strdup(io_stream.line)));
-		free_clean((void **)&(io_stream.line));
-	}
-	tmp = ptr->config;
-	while (NULL != ptr->config)
-	{
-		printf(S_GREEN"debug line:%5c"S_NONE"%s\n", ' ', ptr->config->content);
-		if (e_COMPLETE == _status_check(info_count, ptr->config))
+		if (e_COMPLETE == _status_check(info_count, config[i]))
 			break ;
-		ptr->config = ptr->config->next;
+		++parse_index;
+		++i;
 	}
-	ptr->config = tmp;
+	if (0 == parse_index)
+		exit_clean(E_EMPTY);
+	return (parse_index + 1);
 }

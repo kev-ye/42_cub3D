@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:20:57 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/22 18:50:26 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 15:47:17 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ static void	_map_clean(void)
 	t_cub3d	*ptr;
 	int		i;
 	
-	ptr = sglton();
+	ptr = SGT;
 	if (NULL != ptr->map_info.map)
 	{
-		i = 0;
-		while (NULL != ptr->map_info.map[i])
-			free_clean((void **)ptr->map_info.map[i++]);
-		free_clean((void **)ptr->map_info.map);
+		free(ptr->map_info.map);
+		ptr->map_info.map = NULL;
 	}
 	i = 0;
 	while (i < PATHMAX)
@@ -36,12 +34,17 @@ static void	_map_clean(void)
 
 static void	_clean(void)
 {
-	t_cub3d	*ptr = sglton();
+	t_cub3d	*ptr;
+	int		i = 0;
+
+	ptr = SGT;
 	if (NULL != ptr)
 	{
-		ft_lstclear(&ptr->config, &free);
+		while (NULL != ptr->config[i])
+			free_clean((void **)&ptr->config[i++]);
+		free_clean((void **)ptr->config);
 		_map_clean();
-		free_clean((void**)&ptr);
+		free_clean((void **)&ptr);
 	}
 }
 
