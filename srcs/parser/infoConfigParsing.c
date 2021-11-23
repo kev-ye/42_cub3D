@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:34:42 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 15:56:59 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 19:58:23 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static BOOL	_save_path(char const *line, t_info info)
 	size_t	len;
 	t_cub3d	*ptr;
 
-	ptr = SGT;
+	ptr = sglt();
 	if (2 == info.info)
 	{
 		len = info.end - info.start;
@@ -146,7 +146,7 @@ int	info_config_parsing(void)
 
 	i = 0;
 	parse_index = 0;
-	config = SGT->config;
+	config = sglt()->config;
 	while (NULL != config && NULL != config[i])
 	{
 		if (e_COMPLETE == _status_check(info_count, config[i]))

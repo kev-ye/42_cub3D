@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:28 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 18:41:33 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 19:58:23 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,16 @@ void	_get_map(int const index)
 	int		i;
 
 	i = index;
-	while (NULL != SGT->config[i] && '\0' == SGT->config[i][0])
+	while (NULL != sglt()->config[i] && '\0' == sglt()->config[i][0])
 		++i;
 	tmp = NULL;
-	while (NULL != SGT->config[i])
+	while (NULL != sglt()->config[i])
 	{
-		if (NULL == SGT->config[i + 1] && SGT->config[i][0] == '\0')
+		if (NULL == sglt()->config[i + 1] && sglt()->config[i][0] == '\0')
 			break ;
-		ft_lstadd_back(&tmp, ft_lstnew((char *)SGT->config[i++]));
+		ft_lstadd_back(&tmp, ft_lstnew((char *)sglt()->config[i++]));
 	}
-	ptr = SGT;
+	ptr = sglt();
 	ptr->map_info.map = lst2tab(tmp);
 	ft_lstclear(&tmp, NULL);
 }
@@ -89,15 +89,15 @@ void	_one_player(void)
 
 	ft_bzero(&idx, sizeof(t_idx));
 	player = 0;
-	while (NULL != SGT->map_info.map && NULL != SGT->map_info.map[idx.i])
+	while (NULL != sglt()->map_info.map && NULL != sglt()->map_info.map[idx.i])
 	{
 		idx.j = 0;
-		while ('\0' != SGT->map_info.map[idx.i][idx.j])
+		while ('\0' != sglt()->map_info.map[idx.i][idx.j])
 		{
 			idx.k = 0;
 			while ('\0' != g_ply[idx.k])
 			{
-				if (SGT->map_info.map[idx.i][idx.j] == g_ply[idx.k++])
+				if (sglt()->map_info.map[idx.i][idx.j] == g_ply[idx.k++])
 				{
 					++player;
 					break ;
@@ -117,7 +117,7 @@ void	map_config_parsing(int const index)
 
 	_get_map(index);
 	i = 0;
-	while (NULL != SGT->map_info.map && NULL != SGT->map_info.map[i])
-		_map_line_check(SGT->map_info.map[i++]);
+	while (NULL != sglt()->map_info.map && NULL != sglt()->map_info.map[i])
+		_map_line_check(sglt()->map_info.map[i++]);
 	_one_player();
 }

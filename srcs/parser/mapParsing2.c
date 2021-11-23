@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:52:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 18:58:36 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 19:58:23 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ void	vertical_check(char **map, int const v_pos, int const h_pos)
 {
 	t_check	check;
 
-	if ('1' == SGT->map_info.map[v_pos][h_pos]
-		|| ' ' == SGT->map_info.map[v_pos][h_pos])
+	if ('1' == sglt()->map_info.map[v_pos][h_pos]
+		|| ' ' == sglt()->map_info.map[v_pos][h_pos])
 		return ;
 	ft_bzero(&check, sizeof(t_check));
 	check.v = v_pos;

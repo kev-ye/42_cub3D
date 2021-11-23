@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:29:32 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 14:30:45 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 20:00:23 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**lst2tab(t_list *to_tab)
 
 size_t	strslen(char **sstr)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (NULL != sstr[i])

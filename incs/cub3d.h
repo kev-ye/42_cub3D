@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:40:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 18:56:47 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 19:58:23 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,23 @@
 # include "class.h"
 
 /** @brief tools */
-t_cub3d	*sglton(void);
-void	free_clean(void **);
-int		gnl(int const *, char **, void *);
-char	*join(char *, char *, int const*, void *);
+t_cub3d	*sglt(void);
+void	free_clean(void **to_free);
+int		gnl(int const *fd, char **line,	void *to_free);
 
 /** @brief lib */
-char	**lst2tab(t_list *);
-size_t	strslen(char **);
+char	**lst2tab(t_list *to_tab);
+size_t	strslen(char **sstr);
 
 /** @brief exit */
-void	exit_clean(char *);
+void	exit_clean(char *msg);
 
 /** @brief parser */
-void	config_parsing(char const *);
+void	config_parsing(char const *path);
 int		info_config_parsing(void);
-void	map_config_parsing(int const);
-void	horizontal_check(char const *, int const);
-void	vertical_check(char **, int const, int const);
+void	map_config_parsing(int constindex);
+void	horizontal_check(char const *line, int consth_pos);
+void	vertical_check(char **map, int const v_pos, int const h_pos);
 void	map_parsing(void);
 
 #endif

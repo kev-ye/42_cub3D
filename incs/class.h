@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:04:11 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 14:01:58 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 19:53:36 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ typedef struct s_map
 
 typedef struct s_cub3d
 {
-	int i;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	**config;

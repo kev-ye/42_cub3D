@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 19:22:00 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 19:59:47 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	_path_parsing(void)
 	int		fd;
 	int		i;
 
-	ptr = SGT;
+	ptr = sglt();
 	i = 0;
 	while (i < PATHMAX)
 	{
@@ -48,7 +48,7 @@ void	_get_config(char const *path)
 		free_clean((void **)&(io_stream.line));
 	}
 	close(io_stream.fd);
-	ptr = SGT;
+	ptr = sglt();
 	ptr->config = lst2tab(tmp);
 	ft_lstclear(&tmp, NULL);
 }
@@ -58,12 +58,12 @@ void	_config_empty(void)
 	int	i;
 
 	i = 0;
-	while (NULL != SGT->config && NULL != SGT->config[i])
+	while (NULL != sglt()->config && NULL != sglt()->config[i])
 	{
-		if ('\0' != SGT->config[i++])
+		if ('\0' != sglt()->config[i++])
 			break ;
 	}
-	if (NULL == SGT->config[i])
+	if (NULL == sglt()->config[i])
 		exit_clean(E_EMPTY);
 }
 
@@ -80,7 +80,6 @@ void	_filename_check(char const *path)
 	if (i == -1 || 4 != ft_strlen(path + i)
 		|| 0 != ft_strcmp(".cub", path + i))
 		exit_clean(USAGE);
-	
 }
 
 void	config_parsing(char const *path)
