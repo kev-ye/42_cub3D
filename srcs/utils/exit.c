@@ -6,13 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:20:57 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 15:47:17 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 19:21:35 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	_map_clean(void)
+void	_map_clean(void)
 {
 	t_cub3d	*ptr;
 	int		i;
@@ -35,14 +35,18 @@ static void	_map_clean(void)
 static void	_clean(void)
 {
 	t_cub3d	*ptr;
-	int		i = 0;
-
+	int		i;
+	
+	i = 0;
 	ptr = SGT;
 	if (NULL != ptr)
 	{
-		while (NULL != ptr->config[i])
-			free_clean((void **)&ptr->config[i++]);
-		free_clean((void **)ptr->config);
+		if (ptr->config)
+		{
+			while (NULL != ptr->config[i])
+				free_clean((void **)&ptr->config[i++]);
+			free_clean((void **)ptr->config);
+		}
 		_map_clean();
 		free_clean((void **)&ptr);
 	}

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 16:58:50 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 19:17:43 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@
 # define PATHMAX 4
 
 /** @brief message */
-# define USAGE "usage: ./cub3d [\033[1;33mmap path\033[0m]"
+# define USAGE "usage: ./cub3d [\033[1;33m[map].cub]\033[0m]\n"
 # define E_SYS "SYSCALL failed\n"
 # define E_PATH "PATH file no exist\n"
 # define E_EMPTY "CONFIG is empty\n"
 # define E_ID "ID error\n"
 # define E_MAP "MAP: basic error\n"
 # define E_SURROUND "MAP: no surround\n"
-# define E_PLAYER "MAP: player > 1\n"
+# define E_PLAYER "MAP: player != 1\n"
 
 # define SGT sglton()
 

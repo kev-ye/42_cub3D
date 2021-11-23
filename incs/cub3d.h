@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:40:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 17:14:03 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 18:56:47 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	exit_clean(char *);
 void	config_parsing(char const *);
 int		info_config_parsing(void);
 void	map_config_parsing(int const);
+void	horizontal_check(char const *, int const);
+void	vertical_check(char **, int const, int const);
 void	map_parsing(void);
 
 #endif

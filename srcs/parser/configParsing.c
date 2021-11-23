@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 17:16:41 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 19:22:00 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	_get_config(char const *path)
 
 void	_config_empty(void)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (NULL != SGT->config && NULL != SGT->config[i])
@@ -67,10 +67,27 @@ void	_config_empty(void)
 		exit_clean(E_EMPTY);
 }
 
+void	_filename_check(char const *path)
+{
+	int		i;
+	size_t	len;
+
+	len = ft_strlen(path) - 1;
+	i = len;
+	while (-1 != i)
+		if ('.' == path[i--])
+			break ;
+	if (i == -1 || 4 != ft_strlen(path + i)
+		|| 0 != ft_strcmp(".cub", path + i))
+		exit_clean(USAGE);
+	
+}
+
 void	config_parsing(char const *path)
 {
 	int	index;
 
+	_filename_check(path);
 	_get_config(path);
 	_config_empty();
 	index = info_config_parsing();
