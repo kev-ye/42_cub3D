@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 15:14:42 by kaye              #+#    #+#              #
-#    Updated: 2021/11/23 15:16:36 by kaye             ###   ########.fr        #
+#    Updated: 2021/11/23 17:14:14 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ MLX				:= libmlx.dylib
 SRC				:= main.c
 SUB_SRC			:= configParsing.c \
 				   infoConfigParsing.c \
-				   mapConfigParsing.c
+				   mapConfigParsing.c \
+				   mapParsing.c
 SRC				+= $(addprefix parser/, $(SUB_SRC))
 SUB_SRC			:= lib.c \
 				   tools.c \

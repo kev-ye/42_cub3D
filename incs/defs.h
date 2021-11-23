@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 15:34:52 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 16:58:50 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,9 @@
 # define E_PATH "PATH file no exist\n"
 # define E_EMPTY "CONFIG is empty\n"
 # define E_ID "ID error\n"
-# define E_MAP "MAP error\n"
+# define E_MAP "MAP: basic error\n"
+# define E_SURROUND "MAP: no surround\n"
+# define E_PLAYER "MAP: player > 1\n"
 
 # define SGT sglton()
 

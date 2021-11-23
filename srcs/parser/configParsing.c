@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 15:55:06 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/23 17:16:41 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,5 @@ void	config_parsing(char const *path)
 	index = info_config_parsing();
 	_path_parsing();
 	map_config_parsing(index);
+	map_parsing();
 }
