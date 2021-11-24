@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:32:49 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 16:16:09 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/24 19:26:41 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int	main(int ac, char **av)
 	ptr = sglt();
 	ft_bzero(ptr, sizeof(t_cub3d));
 	config_parsing(av[1]);
-	game_initialize();
+	start_game();
 	return (SUCCESSE);
 }

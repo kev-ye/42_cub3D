@@ -6,13 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:42:19 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 18:06:28 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/24 18:54:43 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	_raycastring_initialize(void)
+void	_raycasting_initialize(void)
 {
 	t_player	ply;
 	t_raycast	*ray;
@@ -56,4 +56,38 @@ void	_side_dist_initialize(void)
 		ray->step_y = 1;
 		ray->side_dist_y = (ray->map_y + 1.0 - ply.pos_y) * ray->delta_dist_y;
 	}
+}
+
+void	_raycasting(void)
+{
+	t_raycast	*ray;
+
+	ray = &sglt()->raycast;
+	_raycasting_initialize();
+	_side_dist_initialize();
+	wall_hit(ray);
+	projection_dist_calculate();
+	height_line_calculate();
+	pixel_to_fill_stripe_calculate();
+	ray->zbuffer[ray->pix] = ray->perp_wall_dist;
+}
+
+void	do_raycasting(void)
+{
+	t_cub3d		*ptr;
+	t_raycast	*ray;
+
+	ptr = sglt();
+	ray = &ptr->raycast;
+	ray->zbuffer = ft_calloc(W_WIDTH, sizeof(double));
+	if (NULL == ray->zbuffer)
+		exit_clean(E_SYS);
+	while (ray->pix < W_WIDTH)
+	{
+		_raycasting();
+		++ray->pix;
+	}
+	mlx_put_image_to_window(
+		ptr->mlx_ptr, ptr->win_ptr, ptr->mlx_img.img_ptr, 0, 0);
+	free_clean((void **)ray->zbuffer);
 }

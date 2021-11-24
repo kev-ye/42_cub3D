@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:04:11 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 17:35:39 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/24 19:12:33 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct	s_img
 /** @class t_player: members value use for player information */
 typedef struct	s_player
 {
-	int		direction;
+	char	direction;
 	double	pos_x;
 	double	pos_y;
 	double	dir_x;

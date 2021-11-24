@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:28 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 17:35:21 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/24 19:00:57 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	_get_player_pos(int const pos_x, int const pos_y, char const direction)
 	t_cub3d	*ptr;
 
 	ptr = sglt();
-	ptr->player.pos_x = pos_x;
-	ptr->player.pos_y = pos_y;
+	ptr->player.pos_x = (double)pos_x;
+	ptr->player.pos_y = (double)pos_y;
 	ptr->player.direction = direction;
 }
 

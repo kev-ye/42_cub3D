@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:44:49 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 16:35:30 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/24 19:27:18 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,17 @@ int	_window_destroy(void)
 	return (1);
 }
 
-// void	_game_loop(void)
-// {
-	
-// }
+int	_game_loop(void)
+{
+	do_raycasting();
+	return (1);
+}
 
-void	game_initialize(void)
+void	start_game(void)
 {
 	_window();
 	_image();
 	mlx_hook(sglt()->win_ptr, RED_CROSS, 1L << 2, _window_destroy, NULL);
+	// mlx_loop_hook(sglt()->mlx_ptr, _game_loop, NULL);
 	mlx_loop(sglt()->mlx_ptr);
 }

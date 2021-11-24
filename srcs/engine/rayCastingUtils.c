@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:42:07 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 18:14:26 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/24 18:46:41 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,19 @@ void	height_line_calculate(void)
 	ray->line_height = (int)(W_HEIGHT / ray->perp_wall_dist);
 }
 
-void	
+void	pixel_to_fill_stripe_calculate(void)
+{
+	t_player	ply;
+	t_raycast	*ray;
+
+	ply = sglt()->player;
+	ray = &sglt()->raycast;
+	ray->draw_start = (-ray->line_height / 2
+		+ ((W_HEIGHT / 2) * ply.cam_height));
+	if (ray->draw_start < 0)
+		ray->draw_start = 0;
+	ray->draw_end = (ray->line_height / 2
+		+ ((W_HEIGHT / 2) * ply.cam_height));
+	if (ray->draw_end >= W_HEIGHT)
+		ray->draw_end = W_HEIGHT - 1;
+}
