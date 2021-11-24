@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:28 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 19:58:23 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/24 17:35:21 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef struct s_idx
 	int	i;
 	int	j;
 	int	k;
+	int	player;
 }	t_idx;
 
 static char const	g_map[] = {
@@ -82,13 +83,22 @@ void	_map_line_check(char *line)
 	}
 }
 
+
+void	_get_player_pos(int const pos_x, int const pos_y, char const direction)
+{
+	t_cub3d	*ptr;
+
+	ptr = sglt();
+	ptr->player.pos_x = pos_x;
+	ptr->player.pos_y = pos_y;
+	ptr->player.direction = direction;
+}
+
 void	_one_player(void)
 {
 	t_idx	idx;
-	int		player;
 
 	ft_bzero(&idx, sizeof(t_idx));
-	player = 0;
 	while (NULL != sglt()->map_info.map && NULL != sglt()->map_info.map[idx.i])
 	{
 		idx.j = 0;
@@ -97,17 +107,19 @@ void	_one_player(void)
 			idx.k = 0;
 			while ('\0' != g_ply[idx.k])
 			{
-				if (sglt()->map_info.map[idx.i][idx.j] == g_ply[idx.k++])
+				if (sglt()->map_info.map[idx.i][idx.j] == g_ply[idx.k])
 				{
-					++player;
+					_get_player_pos(idx.i, idx.j, g_ply[idx.k]);
+					++idx.player;
 					break ;
 				}
+				++idx.k;
 			}
 			++idx.j;
 		}
 		++idx.i;
 	}
-	if (1 != player)
+	if (1 != idx.player)
 		exit_clean(E_PLAYER);
 }
 
