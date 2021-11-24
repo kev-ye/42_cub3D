@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 17:20:57 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 20:00:09 by kaye             ###   ########.fr       */
+/*   Created: 2021/11/24 14:52:51 by kaye              #+#    #+#             */
+/*   Updated: 2021/11/24 16:14:27 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	_map_clean(void)
 	}
 }
 
-static void	_clean(void)
+void	clean(void)
 {
 	t_cub3d	*ptr;
 	int		i;
@@ -45,20 +45,11 @@ static void	_clean(void)
 		{
 			while (NULL != ptr->config[i])
 				free_clean((void **)&ptr->config[i++]);
-			free_clean((void **)ptr->config);
+			free(ptr->config);
+			ptr->config = NULL;
 		}
 		_map_clean();
+		mlx_clean();
 		free_clean((void **)&ptr);
 	}
-}
-
-void	exit_clean(char *msg)
-{
-	if (NULL != msg)
-	{
-		ft_putstr_fd("Error\n", STDERR_FILENO);
-		ft_putstr_fd(msg, STDERR_FILENO);
-	}
-	_clean();
-	exit(EXIT_FAILURE);
 }

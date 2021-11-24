@@ -6,14 +6,14 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 15:14:42 by kaye              #+#    #+#              #
-#    Updated: 2021/11/23 18:56:27 by kaye             ###   ########.fr        #
+#    Updated: 2021/11/24 16:35:46 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror #-g3 -fsanitize=address
 IFLAGS	= -I./incs -I./libft/inc -I./mlx/
 LFLAGS	= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit -lm
 BFLAGS	= 0
@@ -23,7 +23,7 @@ BFLAGS	= 0
 BUILD 			:= .build
 SRC_DIR 		:= srcs
 SUB_DIR 		:= engine \
-				   events \
+				   mlx \
 				   parser \
 				   utils
 OBJ_DIR 		:= $(BUILD)/obj
@@ -33,9 +33,11 @@ DIRS			:= $(OBJ_DIR) $(addprefix $(OBJ_DIR)/, $(SUB_DIR))
 
 # FILES
 
-NAME			:= cub3d
+NAME			:= cub3D
 MLX				:= libmlx.dylib
 SRC				:= main.c
+SUB_SRC			:= gameInitialize.c
+SRC				+= $(addprefix mlx/, $(SUB_SRC))
 SUB_SRC			:= configParsing.c \
 				   infoConfigParsing.c \
 				   mapConfigParsing.c \
@@ -44,7 +46,8 @@ SUB_SRC			:= configParsing.c \
 SRC				+= $(addprefix parser/, $(SUB_SRC))
 SUB_SRC			:= lib.c \
 				   tools.c \
-				   exit.c
+				   clean.c \
+				   mlxClean.c
 SRC				+= $(addprefix utils/, $(SUB_SRC))
 OBJ				:= $(SRC:%.c=$(OBJ_DIR)/%.o)
 

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 19:56:52 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/24 16:35:59 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define S_CYAN "\033[1;36m"
 
 // /** @brief exit return define */
-// # define LOG printf("here: line: ["S_RED"%d"S_NONE"] file: ["S_RED"%s"S_NONE"]\n", __LINE__, __FILE__)
-// # define DEBUGP(x) printf("address: ["S_RED"%p"S_NONE"] -> ", x);LOG;
-// # define DEBUGS(s) printf("content: ["S_RED"%s"S_NONE"] -> ", s);LOG;
+# define LOG printf("here: line: ["S_RED"%d"S_NONE"] file: ["S_RED"%s"S_NONE"]\n", __LINE__, __FILE__)
+# define DEBUGP(x) printf("address: ["S_RED"%p"S_NONE"] -> ", x);LOG;
+# define DEBUGS(s) printf("content: ["S_RED"%s"S_NONE"] -> ", s);LOG;
 
 /** @brief boolean define */
 # define BOOL unsigned int
@@ -40,6 +40,11 @@
 /** @brief return define */
 # define SUCCESSE 0
 # define FAILURE 1
+
+/** @brief MLX INFO */
+# define W_NAME "Cub3D"
+# define W_HEIGHT 800
+# define W_WIDTH 800
 
 /** @brief syscall error */
 # define SYSCALL_ERROR -1
@@ -56,6 +61,28 @@
 # define E_MAP "MAP: basic error\n"
 # define E_SURROUND "MAP: no surround\n"
 # define E_PLAYER "MAP: player != 1\n"
+# define E_MLX "MLX: basic error\n"
+
+/** @brief key code macos / linux */
+# if defined (__APPLE__) && (__MACH__)
+#  define KEY_CODE_ESC 53
+#  define K_W 13
+#  define K_S 1
+#  define K_A 0
+#  define K_D 2
+#  define K_LEFT 123
+#  define K_RIGHT 124
+#  define RED_CROSS 17
+# else
+#  define K_ESC 65307
+#  define K_W 119
+#  define K_S 115
+#  define K_A 97
+#  define K_D 100
+#  define K_LEFT 65361
+#  define K_RIGHT 65363
+#  define RED_CROSS 33
+# endif
 
 /** @brief includes */
 # include <fcntl.h>

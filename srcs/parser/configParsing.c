@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 19:59:47 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/24 16:15:56 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ void	_filename_check(char const *path)
 	while (-1 != i)
 		if ('.' == path[i--])
 			break ;
-	if (i == -1 || 4 != ft_strlen(path + i)
-		|| 0 != ft_strcmp(".cub", path + i))
+	if (i == -1 || 4 != ft_strlen(path + i + 1)
+		|| 0 != ft_strcmp(".cub", path + i + 1))
 		exit_clean(USAGE);
 }
 

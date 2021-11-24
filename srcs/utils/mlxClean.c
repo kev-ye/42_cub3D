@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   mlxClean.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/19 15:32:49 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 16:16:09 by kaye             ###   ########.fr       */
+/*   Created: 2021/11/24 14:52:54 by kaye              #+#    #+#             */
+/*   Updated: 2021/11/24 16:35:11 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char **av)
+void	_img_clean(t_cub3d	*ptr)
+{
+	if (NULL != ptr->mlx_img.img_ptr)
+		mlx_destroy_image(ptr->mlx_ptr, ptr->mlx_img.img_ptr);
+}
+
+void	mlx_clean(void)
 {
 	t_cub3d	*ptr;
 
-	if (2 != ac)
-		exit_clean(USAGE);
 	ptr = sglt();
-	ft_bzero(ptr, sizeof(t_cub3d));
-	config_parsing(av[1]);
-	game_initialize();
-	return (SUCCESSE);
+	_img_clean(ptr);
 }
