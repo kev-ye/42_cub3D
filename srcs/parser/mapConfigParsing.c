@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:28 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 19:00:57 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 16:57:00 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ void	_map_line_check(char *line)
 		++i;
 	}
 }
-
 
 void	_get_player_pos(int const pos_x, int const pos_y, char const direction)
 {

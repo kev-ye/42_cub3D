@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:42:19 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 14:38:29 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 16:54:03 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	_raycasting(t_raycast *ray)
 	height_line_calculate(ray);
 	pixel_to_fill_stripe_calculate(ray);
 	drawing(ray);
-	// ray->zbuffer[ray->pix] = ray->perp_wall_dist;
 }
 
 void	do_raycasting(void)
@@ -73,16 +72,11 @@ void	do_raycasting(void)
 
 	ptr = sglt();
 	ft_bzero(&ray, sizeof(t_raycast));
-	// ray->zbuffer = ft_calloc(W_WIDTH, sizeof(double));
-	// if (NULL == ray->zbuffer)
-	// 	exit_clean(E_SYS);
 	while (ray.pix < W_WIDTH)
 	{
-		LOG;
 		_raycasting(&ray);
 		++ray.pix;
 	}
 	mlx_put_image_to_window(
 		ptr->mlx_ptr, ptr->win_ptr, ptr->mlx_img.img_ptr, 0, 0);
-	// free_clean((void **)ray->zbuffer);
 }

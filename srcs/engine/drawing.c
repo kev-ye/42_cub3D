@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:15:23 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 14:38:52 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 16:58:15 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	drawing(t_raycast *ray)
 	else
 		wall_x = ply.pos_x + ray->perp_wall_dist * ray->ray_dir_x;
 	wall_x -= floor(wall_x);
-	// if (sglt()->map_info.map[ray.map_y][ray.map_x] == '1')
-	// 	_draw_side(&l, wall_x);
+	if (sglt()->map_info.map[ray->map_y][ray->map_x] == '1')
+		_draw_side(&l, wall_x, ray);
 	_draw_ceiling_floor(&l, ray);
 }

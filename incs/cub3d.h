@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:40:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 14:38:38 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 16:23:15 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,21 @@ void	map_parsing(void);
 /** @brief engine: player initialize */
 void	player_initialize(void);
 
+/** @brief engine: player move */
+void	move_w(void);
+void	move_s(void);
+void	move_a(void);
+void	move_d(void);
+
+/** @brief engine: player rotation */
+void	rot_left(void);
+void	rot_right(void);
+
+/** @brief engine: key control */
+int		key_pressing(int keycode);
+int		key_releasing(int keycode);
+void	key_control(void);
+
 /** @brief engine: texture loading */
 void	tex_initialize(void);
 
@@ -62,7 +77,7 @@ void	engine_initialize(void);
 void	start_game(void);
 
 /** @brief engine: draw tools */
-void	fill_color_vertically(t_line *l, size_t const color);
+void	fill_color_vertically(t_line *l, unsigned int const color);
 void	fill_text_vertically(t_line *l, t_img tex, t_raycast *ray);
 
 /** @brief engine: fill color / texture to image */

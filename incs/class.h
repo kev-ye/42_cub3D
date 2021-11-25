@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:04:11 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 14:32:07 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 15:59:27 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct s_cub3d
 	t_img		mlx_img;
 	t_img		tex_img[TEXMAX];
 	t_player	player;
+	BOOL		key[KEYMAX];
 }	t_cub3d;
 
 #endif

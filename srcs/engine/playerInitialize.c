@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:57:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 14:10:57 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 16:56:30 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define DIR_INFOMAX	4
 
-typedef struct	s_dir_info
+typedef struct s_dir_info
 {
 	char	id;
 	double	dir_x;
@@ -23,16 +23,16 @@ typedef struct	s_dir_info
 	double	plane_y;
 }	t_dir_info;
 
-static t_dir_info const g_dir[] = {
-	{'N', 0.0, -1.0, 0.66, 0.0},
-	{'S', 0.0, 1.0, -0.66, 0.0},
-	{'W', -1.0, 0.0, 0.0, -0.66},
-	{'E', 1.0, 0.0, 0.0, 0.66},
+static t_dir_info const	g_dir[] = {
+{'N', 0.0, -1.0, 0.66, 0.0},
+{'S', 0.0, 1.0, -0.66, 0.0},
+{'W', -1.0, 0.0, 0.0, -0.66},
+{'E', 1.0, 0.0, 0.0, 0.66},
 };
 
 void	_set_player_dir(t_player *player)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < DIR_INFOMAX)

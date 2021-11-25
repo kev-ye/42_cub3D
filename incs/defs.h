@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 13:11:30 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 15:58:00 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@
 /** @brief array */
 # define PATHMAX 4
 # define TEXMAX 4
+# define KEYMAX 6
 
 /** @brief message */
 # define USAGE "usage: ./cub3d [\033[1;33m[map].cub]\033[0m]\n"
@@ -67,7 +68,7 @@
 
 /** @brief key code macos / linux */
 # if defined (__APPLE__) && (__MACH__)
-#  define KEY_CODE_ESC 53
+#  define K_ESC 53
 #  define K_W 13
 #  define K_S 1
 #  define K_A 0
