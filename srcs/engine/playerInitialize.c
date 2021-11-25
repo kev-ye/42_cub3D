@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:57:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 16:56:30 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 17:38:51 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_dir_info const	g_dir[] = {
 {'E', 1.0, 0.0, 0.0, 0.66},
 };
 
-void	_set_player_dir(t_player *player)
+static void	_set_player_dir(t_player *player)
 {
 	int	i;
 

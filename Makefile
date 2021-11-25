@@ -6,14 +6,14 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 15:14:42 by kaye              #+#    #+#              #
-#    Updated: 2021/11/25 16:58:52 by kaye             ###   ########.fr        #
+#    Updated: 2021/11/25 19:18:18 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
 IFLAGS	= -I./incs -I./libft/inc -I./mlx/
 LFLAGS	= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit -lm
 BFLAGS	= 0
@@ -37,6 +37,7 @@ NAME			:= cub3D
 MLX				:= libmlx.dylib
 SRC				:= main.c
 SUB_SRC			:= configParsing.c \
+				   infoParsing.c \
 				   infoConfigParsing.c \
 				   mapConfigParsing.c \
 				   mapParsing.c \

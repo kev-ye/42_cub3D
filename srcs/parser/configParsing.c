@@ -6,13 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 16:15:56 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 18:12:47 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	_path_parsing(void)
+static void	_path_parsing(void)
 {
 	t_cub3d	*ptr;
 	int		fd;
@@ -22,14 +22,14 @@ void	_path_parsing(void)
 	i = 0;
 	while (i < PATHMAX)
 	{
-		fd = open(ptr->map_info.path[i++], O_RDONLY);
+		fd = open(ptr->map_info.path[i++], O_RDWR);
 		if (SYSCALL_ERROR == fd)
 			exit_clean(E_PATH);
 		close(fd);
 	}
 }
 
-void	_get_config(char const *path)
+static void	_get_config(char const *path)
 {
 	t_cub3d	*ptr;
 	t_list	*tmp;
@@ -53,7 +53,7 @@ void	_get_config(char const *path)
 	ft_lstclear(&tmp, NULL);
 }
 
-void	_config_empty(void)
+static void	_config_empty(void)
 {
 	int	i;
 
@@ -67,7 +67,7 @@ void	_config_empty(void)
 		exit_clean(E_EMPTY);
 }
 
-void	_filename_check(char const *path)
+static void	_filename_check(char const *path)
 {
 	int		i;
 	size_t	len;

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:42:07 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 16:53:58 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 17:19:55 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ void	wall_hit(t_raycast *ray)
 			ray->side_dist_x += ray->delta_dist_x;
 			ray->map_x += ray->step_x;
 			if (ray->step_x == 1)
-				ray->side = 0;
+				ray->side = e_NO;
 			else if (ray->step_x == -1)
-				ray->side = 1;
+				ray->side = e_SO;
 		}
 		else
 		{
 			ray->side_dist_y += ray->delta_dist_y;
 			ray->map_y += ray->step_y;
 			if (ray->step_y == 1)
-				ray->side = 2;
+				ray->side = e_WE;
 			else if (ray->step_y == -1)
-				ray->side = 3;
+				ray->side = e_EA;
 		}
 		if (sglt()->map_info.map[ray->map_y][ray->map_x] == '1')
 			ray->hit = 1;

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:28 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 16:57:00 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 19:20:39 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static char const	g_ply[] = {
 	'\0'
 };
 
-void	_get_map(int const index)
+static void	_get_map(int const index)
 {
 	t_cub3d	*ptr;
 	t_list	*tmp;
@@ -60,7 +60,7 @@ void	_get_map(int const index)
 	ft_lstclear(&tmp, NULL);
 }
 
-void	_map_line_check(char *line)
+static void	_map_line_check(char *line)
 {
 	int	i;
 	int	j;
@@ -83,7 +83,11 @@ void	_map_line_check(char *line)
 	}
 }
 
-void	_get_player_pos(int const pos_x, int const pos_y, char const direction)
+static void	_get_player_pos(
+	int const pos_x,
+	int const pos_y,
+	char const direction
+)
 {
 	t_cub3d	*ptr;
 
@@ -93,7 +97,7 @@ void	_get_player_pos(int const pos_x, int const pos_y, char const direction)
 	ptr->player.direction = direction;
 }
 
-void	_one_player(void)
+static void	_one_player(void)
 {
 	t_idx	idx;
 

@@ -6,18 +6,29 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:15:23 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 16:58:15 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 18:03:26 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	_draw_side(t_line *l, double wall_x, t_raycast *ray)
+static void	_draw_side(t_line *l, double wall_x, t_raycast *ray)
 {
+	t_img const	tex_view_by_player[TEXMAX] = {
+		sglt()->tex_img[e_EA],
+		sglt()->tex_img[e_WE],
+		sglt()->tex_img[e_SO],
+		sglt()->tex_img[e_NO]
+	};
 	int			tex_x;
 	t_img		tex;
+	int			i;
 
-	tex = sglt()->tex_img[0];
+	tex = tex_view_by_player[e_NO];
+	i = 0;
+	while (++i < TEXMAX)
+		if (i == ray->side)
+			tex = tex_view_by_player[i];
 	tex_x = (int)(wall_x * (double)tex.width);
 	if ((ray->side == 0 || ray->side == 1) && ray->ray_dir_x > 0)
 		tex_x = tex.width - tex_x - 1;
@@ -29,7 +40,7 @@ void	_draw_side(t_line *l, double wall_x, t_raycast *ray)
 	fill_text_vertically(l, tex, ray);
 }
 
-void	_draw_ceiling_floor(t_line *l, t_raycast *ray)
+static void	_draw_ceiling_floor(t_line *l, t_raycast *ray)
 {
 	l->start = 0;
 	l->end = ray->draw_start;

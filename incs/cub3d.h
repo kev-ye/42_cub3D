@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:40:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 16:23:15 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 19:18:43 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	exit_clean(char *msg);
  * parser
 */
 void	config_parsing(char const *path);
+BOOL	img_path_parsing(char *str, int const index, int const info);
 int		info_config_parsing(void);
 void	map_config_parsing(int constindex);
 void	horizontal_check(char const *line, int consth_pos);

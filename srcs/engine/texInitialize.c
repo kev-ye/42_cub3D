@@ -6,13 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:03:52 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 16:53:18 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 17:39:24 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	_set_tex(t_img *tex, int index)
+static void	_set_tex(t_img *tex, int index)
 {
 	t_cub3d	*ptr;
 

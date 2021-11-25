@@ -1,11 +1,10 @@
-               NO             ./tex/north.xpm          
+               NO             ./tex/north.xpm
 SO            ./tex/south.xpm
 
            WE ./tex/west.xpm
-EA           ./tex/east.xpm               
+EA           ./tex/east.xpm
 
-               F 220,100,0               
-
+               F            220,100,0
 C    225,30,0
 
 

@@ -6,13 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:44:49 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 16:53:31 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 17:39:18 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	_window(void)
+static void	_window(void)
 {
 	t_cub3d	*ptr;
 
@@ -28,7 +28,7 @@ void	_window(void)
 	}
 }
 
-void	_image(void)
+static void	_image(void)
 {
 	t_cub3d	*ptr;
 	t_img	*img;
@@ -46,7 +46,7 @@ void	_image(void)
 			);
 }
 
-int	_window_destroy(void)
+static int	_window_destroy(void)
 {
 	t_cub3d	*ptr;
 
@@ -56,7 +56,7 @@ int	_window_destroy(void)
 	return (1);
 }
 
-int	_game_loop(void)
+static int	_game_loop(void)
 {
 	do_raycasting();
 	key_control();

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:52:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/23 19:58:23 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 17:37:47 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,18 @@ typedef struct s_check
 	BOOL	edge2;
 }	t_check;
 
-void	_condition_adapt(BOOL const cond1, BOOL const cond2)
+static void	_condition_adapt(BOOL const cond1, BOOL const cond2)
 {
 	if (TRUE == cond1 && TRUE == cond2)
 		return ;
 	exit_clean(E_SURROUND);
 }
 
-void	_horizontal_check2(char const *line, int const h_pos, t_check *check)
+static void	_horizontal_check2(
+	char const *line,
+	int const h_pos,
+	t_check *check
+)
 {
 	check->h = h_pos;
 	while ('\0' != line[check->h])
@@ -42,7 +46,7 @@ void	_horizontal_check2(char const *line, int const h_pos, t_check *check)
 	}
 }
 
-void	_vertical_check2(
+static void	_vertical_check2(
 	char **map,
 	int const v_pos,
 	int const h_pos,

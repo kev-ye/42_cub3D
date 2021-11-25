@@ -6,13 +6,13 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:42:19 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 16:54:03 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 17:39:04 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	_raycasting_initialize(t_raycast *ray)
+static void	_raycasting_initialize(t_raycast *ray)
 {
 	t_player	ply;
 
@@ -27,7 +27,7 @@ void	_raycasting_initialize(t_raycast *ray)
 	ray->hit = 0;
 }
 
-void	_side_dist_initialize(t_raycast *ray)
+static void	_side_dist_initialize(t_raycast *ray)
 {
 	t_player	ply;
 
@@ -54,7 +54,7 @@ void	_side_dist_initialize(t_raycast *ray)
 	}
 }
 
-void	_raycasting(t_raycast *ray)
+static void	_raycasting(t_raycast *ray)
 {
 	_raycasting_initialize(ray);
 	_side_dist_initialize(ray);
