@@ -1,41 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlxClean.c                                         :+:      :+:    :+:   */
+/*   texInitialize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/24 14:52:54 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 14:18:24 by kaye             ###   ########.fr       */
+/*   Created: 2021/11/25 13:03:52 by kaye              #+#    #+#             */
+/*   Updated: 2021/11/25 14:40:56 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	_main_img_clean(t_cub3d	*ptr)
-{
-	if (NULL != ptr->mlx_img.img_ptr)
-		mlx_destroy_image(ptr->mlx_ptr, ptr->mlx_img.img_ptr);
-}
-
-void	_tex_img_clean(t_cub3d *ptr)
-{
-	int	i;
-	
-	i = 0;
-	while (i < TEXMAX)
-	{
-		if (NULL != ptr->tex_img[i].img_ptr)
-			mlx_destroy_image(ptr->mlx_ptr, ptr->tex_img[i].img_ptr);
-		++i;
-	}
-}
-
-void	mlx_clean(void)
+void	_set_tex(t_img *tex, int index)
 {
 	t_cub3d	*ptr;
 
 	ptr = sglt();
-	_main_img_clean(ptr);
-	_tex_img_clean(ptr);
+	tex->img_ptr = mlx_xpm_file_to_image(
+		ptr->mlx_ptr,
+		ptr->map_info.path[index],
+		&tex->width,
+		&tex->height
+	);
+	if (NULL == tex->img_ptr)
+		exit_clean(E_IMG);
+	tex->addr = mlx_get_data_addr(
+		tex->img_ptr,
+		&tex->bpp,
+		&tex->size,
+		&tex->endian
+	);
+}
+
+void	tex_initialize(void)
+{
+	int	i;
+
+	i = 0;
+	while (i < TEXMAX)
+	{
+		_set_tex(&sglt()->tex_img[i], i);
+		++i;
+	}
 }

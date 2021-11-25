@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:42:07 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 18:46:41 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 14:36:25 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,11 @@ void	wall_hit(t_raycast *ray)
 	}
 }
 
-void	projection_dist_calculate(void)
+void	projection_dist_calculate(t_raycast *ray)
 {
 	t_player	ply;
-	t_raycast	*ray;
 
 	ply = sglt()->player;
-	ray = &sglt()->raycast;
 	if (ray->side == 0 || ray->side == 1)
 		ray->perp_wall_dist = (ray->map_x - ply.pos_x
 			+ (1 - ray->step_x) / 2) / ray->ray_dir_x;
@@ -54,21 +52,16 @@ void	projection_dist_calculate(void)
 			+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
 }
 
-void	height_line_calculate(void)
+void	height_line_calculate(t_raycast *ray)
 {
-	t_raycast	*ray;
-
-	ray = &sglt()->raycast;
 	ray->line_height = (int)(W_HEIGHT / ray->perp_wall_dist);
 }
 
-void	pixel_to_fill_stripe_calculate(void)
+void	pixel_to_fill_stripe_calculate(t_raycast *ray)
 {
 	t_player	ply;
-	t_raycast	*ray;
 
 	ply = sglt()->player;
-	ray = &sglt()->raycast;
 	ray->draw_start = (-ray->line_height / 2
 		+ ((W_HEIGHT / 2) * ply.cam_height));
 	if (ray->draw_start < 0)

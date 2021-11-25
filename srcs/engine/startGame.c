@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gameInitialize.c                                   :+:      :+:    :+:   */
+/*   startGame.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:44:49 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 19:27:18 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 14:26:24 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ void	start_game(void)
 {
 	_window();
 	_image();
+	engine_initialize();
 	mlx_hook(sglt()->win_ptr, RED_CROSS, 1L << 2, _window_destroy, NULL);
-	// mlx_loop_hook(sglt()->mlx_ptr, _game_loop, NULL);
+	mlx_loop_hook(sglt()->mlx_ptr, _game_loop, NULL);
 	mlx_loop(sglt()->mlx_ptr);
 }

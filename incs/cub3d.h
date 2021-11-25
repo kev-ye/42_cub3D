@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:40:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 19:26:46 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 14:38:38 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,27 @@ void	map_parsing(void);
 /** @brief engine: player initialize */
 void	player_initialize(void);
 
+/** @brief engine: texture loading */
+void	tex_initialize(void);
+
 /** @brief engine: engine initialize */
 void	engine_initialize(void);
 
 /** @brief engine: game initialize */
 void	start_game(void);
 
+/** @brief engine: draw tools */
+void	fill_color_vertically(t_line *l, size_t const color);
+void	fill_text_vertically(t_line *l, t_img tex, t_raycast *ray);
+
+/** @brief engine: fill color / texture to image */
+void	drawing(t_raycast *ray);
+
 /** @brief engine: ray-casting utils */
 void	wall_hit(t_raycast *ray);
-void	projection_dist_calculate(void);
-void	height_line_calculate(void);
-void	pixel_to_fill_stripe_calculate(void);
+void	projection_dist_calculate(t_raycast *ray);
+void	height_line_calculate(t_raycast *ray);
+void	pixel_to_fill_stripe_calculate(t_raycast *ray);
 
 /** @brief engine: do ray-casting */
 void	do_raycasting(void);

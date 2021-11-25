@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:04:11 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 19:12:33 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 14:32:07 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,17 @@ typedef struct	s_player
 	double	rot_speed;
 }	t_player;
 
+/** @class t_line: members value use for fill color / texture to image */
+typedef struct	s_line
+{
+	int		start;
+	int		end;
+	int		line_x;
+	int		line_y;
+	int		tex_x;
+	int		tex_y;
+}	t_line;
+
 /** 
  * @class t_raycast: members value use for ray-casting technology
  * @note tuto: https://lodev.org/cgtutor/raycasting.html
@@ -105,8 +116,8 @@ typedef struct s_cub3d
 	char		**config;
 	t_map		map_info;
 	t_img		mlx_img;
+	t_img		tex_img[TEXMAX];
 	t_player	player;
-	t_raycast	raycast;	
 }	t_cub3d;
 
 #endif

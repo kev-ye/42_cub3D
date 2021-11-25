@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 18:57:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 19:18:46 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 14:10:57 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	_set_player_dir(t_player *player)
 			player->plane_x = g_dir[i].plane_x;
 			player->plane_y = g_dir[i].plane_y;
 		}
+		++i;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 18:52:11 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/25 13:11:30 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@
 /** @brief syscall error */
 # define SYSCALL_ERROR -1
 
-/** @brief path number */
+/** @brief array */
 # define PATHMAX 4
+# define TEXMAX 4
 
 /** @brief message */
 # define USAGE "usage: ./cub3d [\033[1;33m[map].cub]\033[0m]\n"
@@ -62,6 +63,7 @@
 # define E_SURROUND "MAP: no surround\n"
 # define E_PLAYER "MAP: player != 1\n"
 # define E_MLX "MLX: basic error\n"
+# define E_IMG "MLX: load tex error\n"
 
 /** @brief key code macos / linux */
 # if defined (__APPLE__) && (__MACH__)

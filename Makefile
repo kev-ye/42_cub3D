@@ -6,14 +6,14 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 15:14:42 by kaye              #+#    #+#              #
-#    Updated: 2021/11/24 19:29:25 by kaye             ###   ########.fr        #
+#    Updated: 2021/11/25 14:21:38 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # COMPILATION
 
 CC		= clang
-CFLAGS	= -Wall -Wextra -Werror #-g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
 IFLAGS	= -I./incs -I./libft/inc -I./mlx/
 LFLAGS	= -L./libft -lft -L./mlx -lmlx -framework OpenGL -framework AppKit -lm
 BFLAGS	= 0
@@ -44,6 +44,10 @@ SUB_SRC			:= configParsing.c \
 SRC				+= $(addprefix parser/, $(SUB_SRC))
 SUB_SRC			:= startGame.c \
 				   playerInitialize.c \
+				   texInitialize.c \
+				   engineInitialize.c \
+				   drawTools.c \
+				   drawing.c \
 				   rayCastingUtils.c \
 				   rayCasting.c
 SRC				+= $(addprefix engine/, $(SUB_SRC))
