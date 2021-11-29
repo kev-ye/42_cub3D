@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:42:19 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 17:39:04 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 23:35:37 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 static void	_raycasting_initialize(t_raycast *ray)
 {
-	t_player	ply;
+	t_player const	ply = sglt()->player;
 
-	ply = sglt()->player;
 	ray->camera_x = 2 * ray->pix / (double)W_WIDTH - 1;
 	ray->ray_dir_x = ply.dir_x + (ply.plane_x * ray->camera_x);
 	ray->ray_dir_y = ply.dir_y + (ply.plane_y * ray->camera_x);
@@ -29,9 +28,8 @@ static void	_raycasting_initialize(t_raycast *ray)
 
 static void	_side_dist_initialize(t_raycast *ray)
 {
-	t_player	ply;
+	t_player const	ply = sglt()->player;
 
-	ply = sglt()->player;
 	if (ray->ray_dir_x < 0)
 	{
 		ray->step_x = -1;
@@ -67,10 +65,9 @@ static void	_raycasting(t_raycast *ray)
 
 void	do_raycasting(void)
 {
-	t_cub3d		*ptr;
+	t_cub3d const	*ptr = sglt();
 	t_raycast	ray;
 
-	ptr = sglt();
 	ft_bzero(&ray, sizeof(t_raycast));
 	while (ray.pix < W_WIDTH)
 	{

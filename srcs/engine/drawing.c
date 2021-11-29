@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:15:23 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 18:03:26 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 23:31:01 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,25 @@ static void	_draw_side(t_line *l, double wall_x, t_raycast *ray)
 
 static void	_draw_ceiling_floor(t_line *l, t_raycast *ray)
 {
+	unsigned char const	*c = sglt()->map_info.ceiling;
+	unsigned char const	*f = sglt()->map_info.floor;
+
 	l->start = 0;
 	l->end = ray->draw_start;
-	fill_color_vertically(l, 0x00FF00);
+	fill_color_vertically(l, create_rgb(c[0], c[1], c[2]));
 	l->start = ray->draw_end;
 	l->end = W_HEIGHT;
-	fill_color_vertically(l, 0xFFFF00);
+	fill_color_vertically(l, create_rgb(f[0], f[1], f[2]));
 }
 
 void	drawing(t_raycast *ray)
 {
-	t_player	ply;
-	t_line		l;
-	double		wall_x;
+	t_player const	ply = sglt()->player;
+	t_line			l;
+	double			wall_x;
 
-	ply = sglt()->player;
 	ft_bzero(&l, sizeof(t_line));
-	l.line_x = ray->pix;
+	l.l_x = ray->pix;
 	if (ray->side == 0 || ray->side == 1)
 		wall_x = ply.pos_y + ray->perp_wall_dist * ray->ray_dir_y;
 	else

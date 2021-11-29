@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 18:12:47 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 23:37:32 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 
 static void	_path_parsing(void)
 {
-	t_cub3d	*ptr;
+	t_cub3d const	*ptr = sglt();
 	int		fd;
 	int		i;
 
-	ptr = sglt();
 	i = 0;
 	while (i < PATHMAX)
 	{
 		fd = open(ptr->map_info.path[i++], O_RDWR);
 		if (SYSCALL_ERROR == fd)
-			exit_clean(E_PATH);
+			exit_clean(E_PATH, __FILE__, __LINE__);
 		close(fd);
 	}
 }
@@ -38,7 +37,7 @@ static void	_get_config(char const *path)
 	ft_bzero(&io_stream, sizeof(io_stream));
 	io_stream.fd = open(path, O_RDONLY);
 	if (SYSCALL_ERROR == io_stream.fd)
-		exit_clean(E_SYS);
+		exit_clean(E_SYS, __FILE__, __LINE__);
 	io_stream.ret = 1;
 	tmp = NULL;
 	while (io_stream.ret > 0)
@@ -64,7 +63,7 @@ static void	_config_empty(void)
 			break ;
 	}
 	if (NULL == sglt()->config[i])
-		exit_clean(E_EMPTY);
+		exit_clean(E_EMPTY, __FILE__, __LINE__);
 }
 
 static void	_filename_check(char const *path)
@@ -79,7 +78,7 @@ static void	_filename_check(char const *path)
 			break ;
 	if (i == -1 || 4 != ft_strlen(path + i + 1)
 		|| 0 != ft_strcmp(".cub", path + i + 1))
-		exit_clean(USAGE);
+		exit_clean(USAGE, __FILE__, __LINE__);
 }
 
 void	config_parsing(char const *path)

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:04:11 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 19:03:55 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 23:31:09 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ typedef struct s_io
 /** @class t_map: members value use for save map and image path */
 typedef struct s_map
 {
-	char	*path[PATHMAX];
-	char	**map;
+	char			*path[PATHMAX];
+	unsigned char	ceiling[COLORMAX];
+	unsigned char	floor[COLORMAX];
+	char			**map;
 }	t_map;
 
 /** 
@@ -75,8 +77,8 @@ typedef struct	s_line
 {
 	int		start;
 	int		end;
-	int		line_x;
-	int		line_y;
+	int		l_x;
+	int		l_y;
 	int		tex_x;
 	int		tex_y;
 }	t_line;

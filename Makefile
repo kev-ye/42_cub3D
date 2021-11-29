@@ -6,7 +6,7 @@
 #    By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/19 15:14:42 by kaye              #+#    #+#              #
-#    Updated: 2021/11/25 19:18:18 by kaye             ###   ########.fr        #
+#    Updated: 2021/11/28 22:06:32 by kaye             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ SRC				+= $(addprefix parser/, $(SUB_SRC))
 SUB_SRC			:= startGame.c \
 				   playerInitialize.c \
 				   texInitialize.c \
-				   engineInitialize.c \
 				   keyControl.c \
 				   playerMove.c \
 				   playerRotation.c \

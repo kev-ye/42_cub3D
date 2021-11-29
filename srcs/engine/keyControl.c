@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 15:48:58 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 16:40:10 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 23:32:26 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	key_pressing(int keycode)
 
 	i = 0;
 	if (keycode == K_ESC)
-		exit_clean(NULL);
+		exit_clean(NULL, __FILE__, __LINE__);
 	else
 	{
 		while (i < KEYMAX)
@@ -39,7 +39,7 @@ int	key_releasing(int keycode)
 
 	i = 0;
 	if (keycode == K_ESC)
-		exit_clean(NULL);
+		exit_clean(NULL, __FILE__, __LINE__);
 	else
 	{
 		while (i < KEYMAX)
@@ -62,10 +62,9 @@ void	key_control(void)
 		rot_left,
 		rot_right
 	};
-	t_cub3d		*ptr;
-	int			i;
+	t_cub3d const	*ptr = sglt();
+	int				i;
 
-	ptr = sglt();
 	i = 0;
 	while (i < KEYMAX)
 	{

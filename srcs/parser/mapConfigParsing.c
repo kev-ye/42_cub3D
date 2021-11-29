@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:28 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 19:20:39 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 22:40:43 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	_map_line_check(char *line)
 	int	j;
 
 	if ('\0' == line[0])
-		exit_clean(E_MAP);
+		exit_clean(E_MAP, __FILE__, __LINE__);
 	i = 0;
 	while ('\0' != line[i])
 	{
@@ -78,7 +78,7 @@ static void	_map_line_check(char *line)
 			++j;
 		}
 		if ('\0' == g_map[j])
-			exit_clean(E_MAP);
+			exit_clean(E_MAP, __FILE__, __LINE__);
 		++i;
 	}
 }
@@ -123,7 +123,7 @@ static void	_one_player(void)
 		++idx.i;
 	}
 	if (1 != idx.player)
-		exit_clean(E_PLAYER);
+		exit_clean(E_PLAYER, __FILE__, __LINE__);
 }
 
 void	map_config_parsing(int const index)

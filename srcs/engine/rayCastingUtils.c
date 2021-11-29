@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:42:07 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 17:19:55 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 23:36:05 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ void	wall_hit(t_raycast *ray)
 
 void	projection_dist_calculate(t_raycast *ray)
 {
-	t_player	ply;
+	t_player const	ply = sglt()->player;
 
-	ply = sglt()->player;
 	if (ray->side == 0 || ray->side == 1)
 		ray->perp_wall_dist = (ray->map_x - ply.pos_x
 				+ (1 - ray->step_x) / 2) / ray->ray_dir_x;
@@ -59,9 +58,8 @@ void	height_line_calculate(t_raycast *ray)
 
 void	pixel_to_fill_stripe_calculate(t_raycast *ray)
 {
-	t_player	ply;
+	t_player const	ply = sglt()->player;
 
-	ply = sglt()->player;
 	ray->draw_start = (-ray->line_height / 2
 			+ ((W_HEIGHT / 2) * ply.cam_height));
 	if (ray->draw_start < 0)

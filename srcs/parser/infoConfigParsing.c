@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:34:42 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 19:22:02 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 23:37:58 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,10 @@ static char const	*g_id[] = {
 
 BOOL	_info_check(t_info *info, int info_count[INFOMAX])
 {
-	t_cub3d	*ptr;
 	int		i;
 
-	ptr = sglt();
 	i = 0;
-	if (TRUE == img_path_parsing(info->str, info->id, info->info))
+	if (TRUE == get_info_parsing(info->str, info->id, info->info, info->cf_id))
 		return (TRUE);
 	while (NULL != g_id[i] && 1 == info->info)
 	{
@@ -58,6 +56,8 @@ BOOL	_info_check(t_info *info, int info_count[INFOMAX])
 		{
 			if (i < PATHMAX)
 				info->id = i;
+			else
+				info->id = -1;
 			if (i >= PATHMAX)
 				info->cf_id = g_id[i];
 			++info_count[i];
@@ -81,8 +81,12 @@ BOOL	_info_line_check(char const *line, int info_count[INFOMAX])
 		while ('\0' != line[info.i] && ' ' == line[info.i])
 			++info.i;
 		info.start = info.i;
-		while ('\0' != line[info.i] && ' ' != line[info.i])
-			++info.i;
+		if (0 == info.info)
+			while ('\0' != line[info.i] && ' ' != line[info.i])
+				++info.i;
+		else
+			while ('\0' != line[info.i])
+				++info.i;
 		info.end = info.i;
 		info.str = ft_substr(line, info.start, info.end - info.start);
 		++info.info;
@@ -100,18 +104,18 @@ int	_status_check(int info_count[INFOMAX], char *config)
 	if ('\0' == config[0])
 		return (e_NOCOMPLETE);
 	if (FALSE == _info_line_check(config, info_count))
-		exit_clean(E_ID);
+		exit_clean(E_ID, __FILE__, __LINE__);
 	while (i < INFOMAX)
 	{
 		if (0 == info_count[i])
 		{
 			if (NULL == config)
-				exit_clean(E_ID);
+				exit_clean(E_ID, __FILE__, __LINE__);
 			printf(S_GREEN"CFG:%5c"S_NONE"%s\n", ' ', config);
 			return (e_NOCOMPLETE);
 		}
 		if (info_count[i++] > 1)
-			exit_clean(E_ID);
+			exit_clean(E_ID, __FILE__, __LINE__);
 	}
 	printf(S_GREEN"CFG:%5c"S_NONE"%s\n", ' ', config);
 	return (e_COMPLETE);
@@ -132,6 +136,6 @@ int	info_config_parsing(void)
 		++i;
 	}
 	if (0 == i)
-		exit_clean(E_EMPTY);
+		exit_clean(E_EMPTY, __FILE__, __LINE__);
 	return (i + 1);
 }

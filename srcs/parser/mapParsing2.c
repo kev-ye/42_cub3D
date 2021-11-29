@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 18:52:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 17:37:47 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 23:18:44 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	_condition_adapt(BOOL const cond1, BOOL const cond2)
 {
 	if (TRUE == cond1 && TRUE == cond2)
 		return ;
-	exit_clean(E_SURROUND);
+	exit_clean(E_SURROUND, __FILE__, __LINE__);
 }
 
 static void	_horizontal_check2(
@@ -65,6 +65,8 @@ static void	_vertical_check2(
 			check->edge2 = TRUE;
 			break ;
 		}
+		if (h_pos > (int)ft_strlen(map[check->v]))
+			break ;
 		++check->v;
 	}
 }
@@ -110,6 +112,8 @@ void	vertical_check(char **map, int const v_pos, int const h_pos)
 			check.edge1 = TRUE;
 			break ;
 		}
+		if (h_pos > (int)ft_strlen(map[check.v]))
+			break ;
 		--check.v;
 	}
 	_vertical_check2(map, v_pos, h_pos, &check);

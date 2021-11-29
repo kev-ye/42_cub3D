@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 14:29:32 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/24 18:44:56 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 22:16:41 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	**lst2tab(t_list *to_tab)
 	size = ft_lstsize(to_tab);
 	ret = ft_calloc(size + 1, sizeof(char *));
 	if (NULL == ret)
-		exit_clean(E_SYS);
+		exit_clean(E_SYS, __FILE__, __LINE__);
 	i = 0;
 	while (NULL != to_tab)
 	{
@@ -52,7 +52,7 @@ int	gnl(int const *fd, char **line,	void *to_free)
 		if (NULL != to_free)
 			free_clean((void **)&to_free);
 		close(*fd);
-		exit_clean(E_SYS);
+		exit_clean(E_SYS, __FILE__, __LINE__);
 	}
 	return (ret);
 }

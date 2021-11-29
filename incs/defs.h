@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 15:58:00 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 21:43:39 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@
 
 /** @brief array */
 # define PATHMAX 4
+# define COLORMAX 3
 # define TEXMAX 4
 # define KEYMAX 6
 

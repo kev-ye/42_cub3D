@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:52:51 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/25 18:18:09 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/29 22:18:51 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,14 @@ void	_clean(void)
 	}
 }
 
-void	exit_clean(char *msg)
+// void		exit_clean(char *msg)
+void	exit_clean(char *msg, char *file, int line)
 {
 	if (NULL != msg)
 	{
 		ft_putstr_fd("Error\n", STDERR_FILENO);
 		ft_putstr_fd(msg, STDERR_FILENO);
+		printf("-> [%s] - [%d]\n", file, line);
 	}
 	_clean();
 	// system("leaks cub3D");
