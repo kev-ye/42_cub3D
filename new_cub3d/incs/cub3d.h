@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:40:01 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 22:17:26 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:35:50 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void		free_clean(void **to_free);
 */
 void		mlx_clean(void);
 void		clean(void);
-// void		exit_clean(char *msg);
 void		exit_clean(char *msg, char *file, int line);
 
 /* 

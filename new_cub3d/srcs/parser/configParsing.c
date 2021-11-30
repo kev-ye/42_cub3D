@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:30 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 23:37:32 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:33:15 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	_path_parsing(void)
 {
 	t_cub3d const	*ptr = sglt();
-	int		fd;
-	int		i;
+	int				fd;
+	int				i;
 
 	i = 0;
 	while (i < PATHMAX)

@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 16:58:28 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 22:40:43 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:25:23 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	_get_map(int const index)
 	int		i;
 
 	i = index;
-	while (NULL != sglt()->config[i] && '\0' == sglt()->config[i][0])
+	while (NULL != sglt()->config[i] && 0 == sglt()->config[i][0])
 		++i;
 	tmp = NULL;
 	while (NULL != sglt()->config[i])
@@ -65,7 +65,7 @@ static void	_map_line_check(char *line)
 	int	i;
 	int	j;
 
-	if ('\0' == line[0])
+	if (0 == line[0])
 		exit_clean(E_MAP, __FILE__, __LINE__);
 	i = 0;
 	while ('\0' != line[i])
@@ -77,7 +77,7 @@ static void	_map_line_check(char *line)
 				break ;
 			++j;
 		}
-		if ('\0' == g_map[j])
+		if (0 == g_map[j])
 			exit_clean(E_MAP, __FILE__, __LINE__);
 		++i;
 	}

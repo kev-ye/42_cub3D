@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/30 14:22:25 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:31:46 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # define S_CYAN "\033[1;36m"
 
 /** @brief debug */
-# define LOG printf("here: line: ["S_RED"%d"S_NONE"] file: ["S_RED"%s"S_NONE"]\n", __LINE__, __FILE__)
-# define DEBUGP(x) printf("address: ["S_RED"%p"S_NONE"] -> ", x);LOG;
-# define DEBUGS(s) printf("content: ["S_RED"%s"S_NONE"] -> ", s);LOG;
+// # define LOG printf("here: line: ["S_RED"%d"S_NONE"] file: ["S_RED"%s"S_NONE"]\n", __LINE__, __FILE__)
+// # define DEBUGP(x) printf("address: ["S_RED"%p"S_NONE"] -> ", x);LOG;
+// # define DEBUGS(s) printf("content: ["S_RED"%s"S_NONE"] -> ", s);LOG;
 
 /** @brief boolean define */
 # define BOOL unsigned int
@@ -89,6 +89,9 @@
 # endif
 
 /** @brief includes */
+# if defined(__linux__)
+#  include <stdint.h>
+# endif
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>

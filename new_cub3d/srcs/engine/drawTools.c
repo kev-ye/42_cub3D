@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 13:18:11 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 23:31:57 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:32:26 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	fill_color_vertically(t_line *l, unsigned int const color)
 {
-	t_img const *img = &sglt()->mlx_img;
+	t_img const	*img = &sglt()->mlx_img;
 
 	l->l_y = l->start;
 	if (l->l_y >= 0)

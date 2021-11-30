@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 15:48:58 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 23:32:26 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:32:44 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	key_releasing(int keycode)
 
 void	key_control(void)
 {
-	static void	(*func_ptr[KEYMAX])() = {
+	static void		(*func_ptr[KEYMAX])() = {
 		move_w,
 		move_s,
 		move_a,

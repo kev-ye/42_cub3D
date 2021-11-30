@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:04:11 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 23:31:09 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:29:58 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_map
  * @class t_img: members value use for create mlx image
  * @note tuto: https://harm-smits.github.io/42docs/libs/minilibx/images.html
  */
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img_ptr;
 	char	*addr;
@@ -58,7 +58,7 @@ typedef struct	s_img
 }	t_img;
 
 /** @class t_player: members value use for player information */
-typedef struct	s_player
+typedef struct s_player
 {
 	char	direction;
 	double	pos_x;
@@ -73,7 +73,7 @@ typedef struct	s_player
 }	t_player;
 
 /** @class t_line: members value use for fill color / texture to image */
-typedef struct	s_line
+typedef struct s_line
 {
 	int		start;
 	int		end;
@@ -87,7 +87,7 @@ typedef struct	s_line
  * @class t_raycast: members value use for ray-casting technology
  * @note tuto: https://lodev.org/cgtutor/raycasting.html
  */
-typedef struct	s_raycast
+typedef struct s_raycast
 {
 	int			pix;
 	double		camera_x;

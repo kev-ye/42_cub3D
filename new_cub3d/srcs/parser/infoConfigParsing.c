@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 16:34:42 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 23:37:58 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:25:23 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	_status_check(int info_count[INFOMAX], char *config)
 	int	i;
 
 	i = 0;
-	if ('\0' == config[0])
+	if (0 == config[0])
 		return (e_NOCOMPLETE);
 	if (FALSE == _info_line_check(config, info_count))
 		exit_clean(E_ID, __FILE__, __LINE__);

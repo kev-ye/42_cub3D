@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 17:57:57 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 23:20:38 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:33:52 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ typedef struct s_color_info
 
 BOOL	_path_line_parsing(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while ('\0' != str[i])
@@ -62,7 +62,7 @@ BOOL	_color_line_parsing(char *str)
 BOOL	_fill_color(char *str, char const *cf_id, int color_index)
 {
 	t_cub3d		*ptr;
-	unsigned	color;
+	uint32_t	color;
 
 	ptr = sglt();
 	if (ft_strlen(str) > 3)

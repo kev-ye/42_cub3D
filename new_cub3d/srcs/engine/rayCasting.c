@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 17:42:19 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 23:35:37 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:32:54 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void	_raycasting(t_raycast *ray)
 void	do_raycasting(void)
 {
 	t_cub3d const	*ptr = sglt();
-	t_raycast	ray;
+	t_raycast		ray;
 
 	ft_bzero(&ray, sizeof(t_raycast));
 	while (ray.pix < W_WIDTH)
