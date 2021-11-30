@@ -2,18 +2,18 @@
 
 ## Index
 
-* [Presentation](#Presentation)
+* [Note](#Note)
 * [How_to_run](#How_to_run)
 * [Some_debug](#Some_debug)
-* [Utils_docs](#Utils_docs)
 
-## Presentation
+## Note
 
-This project is inspired by the world-famous eponymous 90’s game, which was the first FPS ever. It will enable you to explore ray-casting. Your goal will be to make a dynamic view inside a maze, in which you’ll have to find your way.
+Old cub3d with old subject.  
+Mandatory part: Textures + Sprites.  
+Bonus part: Game music + Minimap + Rotation up & down + Multi sprites.  
+Program are tested in Macos and linux.  
 
 ## How_to_run
-
-    Program are tested in Macos and linux.
 
 Mandadory part :
 
@@ -32,9 +32,3 @@ Bonus part :
 Solution :
 
     Use the function "mlx_destroy_display(void *mlx_ptr)" to destroy your mlx pointer and free it.
-
-
-## Utils_docs
-
-[__Link_getting_started_mlx__](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)  
-[__Link_lodev_raycasting__](https://lodev.org/cgtutor/raycasting.html)
