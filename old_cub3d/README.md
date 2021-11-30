@@ -2,11 +2,11 @@
 
 ## Index
 
-* [Note](#Note)
+* [Infomation](#Information)
 * [How_to_run](#How_to_run)
 * [Some_debug](#Some_debug)
 
-## Note
+## Infomation
 
 Old cub3d with old subject.  
 Mandatory part: Textures + Sprites.  

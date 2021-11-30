@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 15:58:40 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/29 21:43:39 by kaye             ###   ########.fr       */
+/*   Updated: 2021/11/30 14:22:25 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define S_PURPLE "\033[1;35m"
 # define S_CYAN "\033[1;36m"
 
-// /** @brief exit return define */
+/** @brief debug */
 # define LOG printf("here: line: ["S_RED"%d"S_NONE"] file: ["S_RED"%s"S_NONE"]\n", __LINE__, __FILE__)
 # define DEBUGP(x) printf("address: ["S_RED"%p"S_NONE"] -> ", x);LOG;
 # define DEBUGS(s) printf("content: ["S_RED"%s"S_NONE"] -> ", s);LOG;
