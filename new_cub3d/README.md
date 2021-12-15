@@ -14,7 +14,7 @@ Mandatory part: Textures
 Program are tested in Macos.
 
 ## To_do
- - [x] parser map: note: use split is better
+ - [x] parser part: note: use split is better
  - [x] mlx part: done
  - [x] raycasting part: done
  - [ ] run in linux
