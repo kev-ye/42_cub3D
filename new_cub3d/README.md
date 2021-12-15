@@ -3,6 +3,7 @@
 ## Index
 
 * [Infomation](#Information)
+* [To_do](#To_do)
 * [Singleton](#Singleton)
 * [How_to_run](#How_to_run)
 
@@ -11,6 +12,13 @@
 The code is cleaner than my old cub3d.  
 Mandatory part: Textures  
 Program are tested in Macos.
+
+## To_do
+ - [x] parser map: note: use split is better
+ - [x] mlx part: done
+ - [x] raycasting part: done
+ - [ ] run in linux
+ - [ ] add a beautiful texture
 
 ## Singleton
 

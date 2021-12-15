@@ -6,7 +6,7 @@
 /*   By: kaye <kaye@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:52:51 by kaye              #+#    #+#             */
-/*   Updated: 2021/11/30 14:35:33 by kaye             ###   ########.fr       */
+/*   Updated: 2021/12/15 19:07:22 by kaye             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,12 @@ void	exit_clean(char *msg, char *file, int line)
 	{
 		ft_putstr_fd("Error\n", STDERR_FILENO);
 		ft_putstr_fd(msg, STDERR_FILENO);
+		ft_putstr_fd("File: ", STDERR_FILENO);
 		ft_putstr_fd(file, STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);
+		ft_putstr_fd("Line: ", STDERR_FILENO);
 		ft_putnbr_fd(line, STDERR_FILENO);
+		ft_putstr_fd("\n", STDERR_FILENO);
 	}
 	_clean();
 	exit(EXIT_FAILURE);
